@@ -52,10 +52,11 @@ const createUser = async (user) => {
 };
 
 const getUserPOI = async (query) => {
-  if (!query) return null;
+  if (!query || Object.keys(query).length <= 0) return null;
   const { data } = await axios.get(
     `https://api.tomtom.com/search/2/search/${query.text}.json&key=${Config.tomtomToken}`
   );
+
   return data;
 };
 
